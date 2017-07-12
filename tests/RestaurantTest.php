@@ -63,6 +63,33 @@
 
         }
 
+        function testGetId()
+        {
+            $name = "Claim Jumper";
+            $test_restaurant = new Restaurant($name);
+            $test_restaurant->save();
+
+            $result = $test_restaurant->getId();
+
+            $this->assertTrue(is_numeric($result));
+        }
+
+        function testFind()
+        {
+            $name = "Roadhouse";
+            $name2 = "Olive Garden";
+
+            $test_restaurant = new Restaurant($name);
+            $test_restaurant->save();
+            $test_restaurant2 = new Restaurant($name2);
+            $test_restaurant2->save();
+
+            $id = $test_restaurant->getId();
+            $result = Restaurant::find($id);
+
+            $this->assertEquals($test_restaurant, $result);
+        }
+
     }
 
 
