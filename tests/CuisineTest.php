@@ -5,6 +5,7 @@
     */
 
     require_once "src/Cuisine.php";
+    require_once "src/Restaurant.php";
 
     $server = 'mysql:host=localhost:8889;dbname=dining_test';
     $username = 'root';
@@ -16,6 +17,7 @@
         protected function tearDown()
         {
             Cuisine::deleteAll();
+            Restaurant::deleteAll();
         }
 
         function testGetType()
@@ -32,6 +34,7 @@
         function testSave()
         {
             $type = "thai food";
+
             $test_cuisine = new Cuisine($type);
 
             $executed = $test_cuisine->save();
@@ -52,10 +55,9 @@
 
             $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
 
-
         }
 
-        function deleteAll()
+        function testDeleteAll()
         {
             $type = "thai food";
             $type2 = "mexican food";
@@ -70,9 +72,22 @@
 
             $this->assertEquals([], $result);
 
-
         }
+        function testFind()
+        {
 
+            $type = "thai food";
+            $type2 = "mexican food";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+            $test_cuisine2 = new Cuisine($type2);
+            $test_cuisine2->save();
+            $id = $test_cuisine->getId();
+
+            $result = Cuisine::find($id);
+
+            $this->assertEquals($test_cuisine, $result);
+        }
 
 
 
