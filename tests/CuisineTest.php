@@ -13,6 +13,10 @@
 
     class CuisineTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Cuisine::deleteAll();
+        }
 
         function testGetType()
         {
@@ -35,6 +39,39 @@
             $this->assertTrue($executed, "Cuisine was not saved to database");
         }
 
+        function testGetAll()
+        {
+            $type = "thai food";
+            $type2 = "mexican food";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+            $test_cuisine2 = new Cuisine($type2);
+            $test_cuisine2->save();
+
+            $result = Cuisine::getAll();
+
+            $this->assertEquals([$test_cuisine, $test_cuisine2], $result);
+
+
+        }
+
+        function deleteAll()
+        {
+            $type = "thai food";
+            $type2 = "mexican food";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+            $test_cuisine2 = new Cuisine($type2);
+            $test_cuisine2->save();
+
+            Cuisine::deleteAll();
+
+            $result = Cuisine::getAll();
+
+            $this->assertEquals([], $result);
+
+
+        }
 
 
 
