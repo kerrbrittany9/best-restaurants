@@ -89,7 +89,25 @@
             $this->assertEquals($test_cuisine, $result);
         }
 
+        function testGetRestaurants()
+        {
+            $type = "mexican food";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+            $cuisine_id = $test_cuisine->getId();
 
+            $name = "Por que no?";
+            $name2 = "Taqueria";
+            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $test_restaurant->save();
+            $test_restaurant2 = new Restaurant($name2, $cuisine_id);
+            $test_restaurant2->save();
+
+            $result = $test_cuisine->getRestaurants();
+
+            $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
+
+        }
 
     }
 

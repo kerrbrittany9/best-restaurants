@@ -11,6 +11,8 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
+    $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
+
 
 
 ?>

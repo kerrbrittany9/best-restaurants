@@ -34,9 +34,8 @@
 
         function save()
         {
-            var_dump($this->getCuisineId());
-            $sql = "INSERT INTO restaurants (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()});";
-            $executed = $GLOBALS['DB']->exec($sql);
+
+            $executed = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()});");
 
             if ($executed) {
                 $this->id = $GLOBALS['DB']->lastInsertId();
