@@ -8,6 +8,7 @@
 
     require_once "src/Restaurant.php";
     require_once "src/Cuisine.php";
+    require_once "src/Review.php";
 
     $server = 'mysql:host=localhost:8889;dbname=dining_test';
     $username = 'root';
