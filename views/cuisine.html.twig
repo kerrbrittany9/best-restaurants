@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
     <title>Cuisines</title>
   </head>
   <body>
@@ -15,6 +17,10 @@
         {% endfor %}
       </ul>
     {% endif %}
+
+    <p><a href="/cuisines/{{ cuisine.getId }}/edit">Edit this cuisine</a></p>
+
+    <p><a href='/'>Home</a></p>
 
     <h4>Add a restaurant</h4>
 

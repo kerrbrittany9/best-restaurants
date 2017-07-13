@@ -124,6 +124,38 @@
             $this->assertEquals("deli food", $test_cuisine->getType());
         }
 
+        function testDelete()
+        {
+            $type = "Scandonavian";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $type = "Hawaian";
+            $test_cuisine2 = new Cuisine($type);
+            $test_cuisine2->save();
+
+            $test_cuisine->delete();
+
+            $this->assertEquals([$test_cuisine2], Cuisine::getAll());
+        }
+
+        function testDeleteCuisineRestaurants()
+        {
+            $type = "Mexican";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $name = "Outback";
+            $description = "steaks n shit";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
+            $test_restaurant->save();
+
+            $test_cuisine->delete();
+
+            $this->assertEquals([], Restaurant::getAll());
+        }
+
     }
 
 
