@@ -49,6 +49,10 @@
               }
         }
 
+        static function getAll()
+        {
+
+        }
 
     }
 
