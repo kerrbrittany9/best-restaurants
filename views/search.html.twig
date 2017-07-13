@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Here are restaurants matching your cuisine search</h1>
+    {% for restaurant in restaurants %}
+      <p>{{ restaurant.getName }}</p>
+    {% endfor %}
+
+    <a href="/">Home</a>
+  </body>
+</html>

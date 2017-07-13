@@ -25,6 +25,13 @@
       {% else %}
         <p>There are no cuisines yet</p>
       {% endif %}
+
+      <h1> Search for food</h1>
+      <form action="/search" method="post">
+        <label for="search">Cuisine type: </lable>
+        <input id="search" name="search" type="text">
+        <button type="submit">Search</button>
+      </form>
     </div>
   </body>
 </html>

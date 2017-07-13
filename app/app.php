@@ -42,6 +42,19 @@
       return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
     });
 
+    $app->post("/search", function() use ($app) {
+      $type = $_POST['search'];
+      $cuisines = Cuisine::getAll();
+      $result;
+      foreach($cuisines as $item) {
+        if ($item->getType() == $type) {
+          $result = $item;
+        }
+      }
+      $items = $result->getRestaurants();
+      return $app['twig']->render('search.html.twig', array('restaurants' => $items));
+    });
+
     return $app;
 
 ?>
