@@ -111,6 +111,19 @@
 
         }
 
+        function testUpdate()
+        {
+            $type = "street food";
+            $test_cuisine = new Cuisine($type);
+            $test_cuisine->save();
+
+            $new_type = "deli food";
+
+            $test_cuisine->update($new_type);
+
+            $this->assertEquals("deli food", $test_cuisine->getType());
+        }
+
     }
 
 
