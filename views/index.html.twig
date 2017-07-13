@@ -5,10 +5,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>Restaurant List</h1>
+      <h1>Best Restaurants of Portland</h1>
       <p>Add a cuisine style</p>
 
-      <form action="/cuisines" method="post">
+      <form action="/cuisine" method="post">
         <label for="type">Style of food</label>
         <input id="type" name="type" type="text">
 
@@ -19,7 +19,7 @@
         <p>Here are the cuisines you've listed:</p>
         <ul>
           {% for cuisine in cuisines %}
-            <li><a href="/cuisines/{{ cuisine.getId }}">{{ cuisine.getType }}</a></li>
+            <li><a href="/cuisine/{{ cuisine.getId }}">{{ cuisine.getType }}</a></li>
           {% endfor %}
         </ul>
       {% else %}

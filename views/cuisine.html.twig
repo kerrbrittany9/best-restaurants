@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cuisines</title>
+  </head>
+  <body>
+    <h1>{{ cuisine.getType }}</h1>
+
+    {% if restaurants is not empty %}
+      <p>Here are your restaurants:</p>
+      <ul>
+        {% for restaurant in restaurants %}
+          <li>{{ restaurant.getName }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <h4>Add a restaurant</h4>
+
+   <form action='/restaurants' method='post'>
+       <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisine.getId() }}">
+       <label for='input_name'>Restaurant name</label>
+       <input id='input_name' name='input_name' type='text'>
+
+       <button type='submit'>Add restaurant</button>
+   </form>
+
+   <p><a href='/'>Home</a></p>
+
+
+
+  </body>
+</html>
