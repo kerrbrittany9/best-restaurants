@@ -97,10 +97,12 @@
             $cuisine_id = $test_cuisine->getId();
 
             $name = "Por que no?";
+            $description = "cool and hip tacos";
             $name2 = "Taqueria";
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $description2 = "autentico";
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $test_restaurant->save();
-            $test_restaurant2 = new Restaurant($name2, $cuisine_id);
+            $test_restaurant2 = new Restaurant($name2, $cuisine_id, $description2);
             $test_restaurant2->save();
 
             $result = $test_cuisine->getRestaurants();

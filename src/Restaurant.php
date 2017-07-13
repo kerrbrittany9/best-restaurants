@@ -2,13 +2,15 @@
     class Restaurant
     {
         private $name;
+        private $description;
         private $cuisine_id;
         private $id;
 
-        function __construct($name, $cuisine_id, $id = null)
+        function __construct($name, $cuisine_id, $description, $id = null)
         {
             $this->name = $name;
             $this->cuisine_id = $cuisine_id;
+            $this->description = $description;
             $this->id = $id;
         }
 
@@ -32,11 +34,15 @@
             return $this->cuisine_id;
         }
 
+        function getDescription()
+        {
+          return $this->description;
+        }
+
         function save()
         {
 
-            $executed = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id) VALUES ('{$this->getName()}', {$this->getCuisineId()});");
-
+            $executed = $GLOBALS['DB']->exec("INSERT INTO restaurants (name, cuisine_id, description) VALUES ('{$this->getName()}', {$this->getCuisineId()}, '{$this->getDescription()}');");
             if ($executed) {
                 $this->id = $GLOBALS['DB']->lastInsertId();
                 return true;
@@ -52,10 +58,12 @@
             foreach($returned_restaurants as $item) {
                 $name = $item['name'];
                 $cuisine_id = $item['cuisine_id'];
+                $description = $item['description'];
                 $id = $item['id'];
-                $new_restaurant = new Restaurant($name, $cuisine_id, $id);
+                $new_restaurant = new Restaurant($name, $cuisine_id, $description, $id);
                 array_push($restaurants, $new_restaurant);
             }
+            var_dump($restaurants);
             return $restaurants;
         }
 
@@ -72,9 +80,10 @@
             foreach($returned_restaurants as $item) {
                 $item_name = $item['name'];
                 $cuisine_id = $item['cuisine_id'];
+                $description = $item['description'];
                 $item_id = $item['id'];
                 if ($item_id == $search_id) {
-                    $new_restaurant = new Restaurant($item_name, $cuisine_id, $item_id);
+                    $new_restaurant = new Restaurant($item_name, $cuisine_id, $description, $item_id);
                 }
             }
             return $new_restaurant;

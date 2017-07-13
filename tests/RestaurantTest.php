@@ -29,9 +29,10 @@
             $test_cuisine->save();
 
             $name = "Olive Garden";
+            $description = "super delish";
             $cuisine_id = $test_cuisine->getId();
 
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $executed = $test_restaurant->save();
 
             $this->assertTrue($executed, "Item was not saved to database");
@@ -45,10 +46,12 @@
             $cuisine_id = $test_cuisine->getId();
 
             $name = "Roadhouse";
+            $description = "good ole texan yum";
             $name2 = "Olive Garden";
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $thing = "My name is dylan";
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $test_restaurant->save();
-            $test_restaurant2 = new Restaurant($name2, $cuisine_id);
+            $test_restaurant2 = new Restaurant($name2, $cuisine_id, $thing);
             $test_restaurant2->save();
 
             $result = Restaurant::getAll();
@@ -64,11 +67,12 @@
             $cuisine_id = $test_cuisine->getId();
 
             $name = "Roadhouse";
+            $description = "good ole texan yum";
             $name2 = "Olive Garden";
-
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $description2 = "i think it's food!";
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $test_restaurant->save();
-            $test_restaurant2 = new Restaurant($name2, $cuisine_id);
+            $test_restaurant2 = new Restaurant($name2, $cuisine_id, $description2);
             $test_restaurant2->save();
 
             Restaurant::deleteAll();
@@ -85,8 +89,9 @@
             $test_cuisine->save();
 
             $name = "Claim Jumper";
+            $description = "where you find paul allen in the toilet";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $test_restaurant->save();
 
 
@@ -101,8 +106,9 @@
             $test_cuisine->save();
 
             $name = "Claim Jumper";
+            $description = "where you find paul allen in the toilet";
             $cuisine_id = $test_cuisine->getId();
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $test_restaurant->save();
 
             $result = $test_restaurant->getCuisineId();
@@ -118,10 +124,12 @@
             $cuisine_id = $test_cuisine->getId();
 
             $name = "Roadhouse";
+            $description = "good ole texan yum";
             $name2 = "Olive Garden";
-            $test_restaurant = new Restaurant($name, $cuisine_id);
+            $description2 = "i think it's food!";
+            $test_restaurant = new Restaurant($name, $cuisine_id, $description);
             $test_restaurant->save();
-            $test_restaurant2 = new Restaurant($name2, $cuisine_id);
+            $test_restaurant2 = new Restaurant($name2, $cuisine_id, $description2);
             $test_restaurant2->save();
 
             $id = $test_restaurant->getId();

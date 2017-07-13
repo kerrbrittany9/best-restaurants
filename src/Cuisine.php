@@ -79,8 +79,9 @@
             foreach($returned_restaurants as $item) {
                 $name = $item['name'];
                 $cuisine_id = $item['cuisine_id'];
+                $description = $item['description'];
                 $restaurant_id = $item['id'];
-                $new_restaurant = new Restaurant($name, $cuisine_id, $restaurant_id);
+                $new_restaurant = new Restaurant($name, $cuisine_id, $description, $restaurant_id);
                 array_push($restaurants, $new_restaurant);
             }
             return $restaurants;
